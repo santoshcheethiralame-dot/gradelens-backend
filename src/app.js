@@ -1,18 +1,16 @@
-import express from 'express';
-import cors from 'cors'; //allows frontend to communicate with backend
+import express from "express";
+import cors from "cors";
+import authRoutes from "./routes/authRoutes.js";
 
 const app = express();
 
 app.use(cors());
 app.use(express.json());
 
-app.get('/', (req,res) => {
-  res.send('GradeLens Backend is running');
-});
+app.use("/auth", authRoutes);
 
-app.get("/health", (req, res) => {
-  res.json({ status: "ok", service: "GradeLens backend" });
+app.get("/", (req, res) => {
+  res.send("GradeLens API running");
 });
-
 
 export default app;
