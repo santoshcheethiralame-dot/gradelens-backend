@@ -1,4 +1,4 @@
-import User from '../models/User.js';
+import User from '../models/userModel.js';
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 
@@ -63,7 +63,7 @@ export const loginUser = async (req, res) => {
     );
 
     //4. Send Response
-    res.jsnon({
+    res.json({
       message: "Login successful",
       token,
     });

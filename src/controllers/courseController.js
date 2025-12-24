@@ -1,5 +1,20 @@
 import Course from "../models/courseModel.js";
 
+export const createCourse = async (req, res) => {
+  try {
+    const { courseCode, courseName, department, semester } = req.body;
+    const course = await Course.create({
+      courseCode,
+      courseName,
+      department,
+      semester,
+    });
+    res.status(201).json(course);
+  } catch (error) {
+    res.status(500).json({ message: "Server error" });
+  }
+};
+
 export const getAllCourses = async (req, res) => {
   try {
     const courses = await Course.find();
